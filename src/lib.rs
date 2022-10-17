@@ -1,13 +1,11 @@
 //! A crate to ReDef Type for schema
-pub(crate) mod account {
+mod account {
     // pub use super::*;
-    pub(crate) mod auth {
+    mod auth {
         pub type AccountId = u64;
-        pub type UserId = AccountId;
-        pub type TeamId = AccountId;
     }
     pub use auth::*;
-    pub(crate) mod trading {
+    mod trading {
         use crate::AccountId;
 
         pub type PaymentId = u64;
@@ -23,17 +21,19 @@ pub(crate) mod account {
 }
 // pub use account::{auth::*, trading::*, AccountId, Name};
 pub use account::*;
-pub(crate) mod thing {
+mod thing {
     use crate::*;
 
     pub type ObjectId = u64;
     pub type LanguageId = u16;
     // pub type ObjectKind = u32;
     pub type OwnerId = AccountId; // alias for user team
+    pub type UserId = OwnerId;
+    pub type TeamId = OwnerId;
     pub type Picture = Vec<u8>;
 }
 pub use thing::*;
-pub(crate) mod place {
+mod place {
     pub type Address = String;
     pub type AddressId = u32;
     pub type District = String;
@@ -45,7 +45,7 @@ pub(crate) mod place {
     pub type PostalCode = String;
 }
 pub use place::*;
-pub(crate) mod status {
+mod status {
 
     pub type TimeAlias = chrono::DateTime<chrono::Utc>; // use sea_orm::prelude::DateTimeUtc;
     pub type KeepDay = u16;
