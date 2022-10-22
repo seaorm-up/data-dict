@@ -2,7 +2,7 @@
 mod account {
     // pub use super::*;
     mod auth {
-        pub type AccountId = u64;
+        pub type AccountId = OpenId;
         pub type OpenId = u64;
         pub type UnionId = u64;
         pub type AppId = u64;
@@ -44,6 +44,7 @@ mod thing {
     pub type OwnerId = AccountId; // alias for user team
     pub type UserId = OwnerId;
     pub type TeamId = OwnerId;
+    // pub type Id = OwnerId;
     pub type Picture = Vec<u8>;
     mod chat {
         pub type ChatId = u64;
